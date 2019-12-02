@@ -14,6 +14,7 @@ modules:
       - name: demo_fullstack_cf_html5_repo_runtime
       - name: uaa_demo_fullstack_cf
       - name: portal_resources_demo_fullstack_cf
+      - name: workflowdemo
   - name: demo_fullstack_cf_ui_deployer
     type: com.sap.html5.application-content
     path: demo_fullstack_cf_ui_deployer
@@ -44,6 +45,14 @@ modules:
       - name: uaa_demo_fullstack_cf
       - name: demo_fullstack_cf_html5_repo_host
       - name: demo_fullstack_cf_ui_deployer
+      - name: workflowdemo
+  - name: wf
+    type: com.sap.application.content
+    path: wf
+    requires:
+      - name: workflowdemo
+        parameters:
+          content-target: true
 resources:
   - name: demo_fullstack_cf_html5_repo_runtime
     parameters:
@@ -71,3 +80,8 @@ resources:
       service-plan: standard
       service: portal
     type: org.cloudfoundry.managed-service
+  - name: workflowdemo
+    parameters:
+      service-plan: lite
+      service: workflow
+    type: org.cloudfoundry.existing-service
